@@ -1,0 +1,14 @@
+version: '3'
+services:
+  backend:
+    container_name: checker_js_error
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8080:3000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/hello-world"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
